@@ -1,0 +1,56 @@
+{
+  "manifest_version": 3,
+  "name": "RightClick Pro - Enable Copy & Context Menu",
+  "version": "1.0.0",
+  "description": "Premium Chrome extension that enables right-click context menu and content copying on disabled sites with visual analytics.",
+  
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  
+  "host_permissions": [
+    "*://*/*"
+  ],
+  
+  "background": {
+    "service_worker": "scripts/background.js"
+  },
+  
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["scripts/content.js"],
+      "css": ["styles/content.css"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "RightClick Pro",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  
+  "web_accessible_resources": [
+    {
+      "resources": ["styles/*", "scripts/injected.js"],
+      "matches": ["*://*/*"]
+    }
+  ]
+}
+
